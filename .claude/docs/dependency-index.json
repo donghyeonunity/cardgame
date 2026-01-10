@@ -1,0 +1,33 @@
+{
+  "_meta": {
+    "description": "문서 의존성 인덱스 (빠른 조회용)",
+    "source": "dependency-map.md",
+    "updatedAt": "2026-01-10"
+  },
+  "dependencies": {
+    "class-advancement.md": ["class-advancement-decision.md", "cards.md", "paladin.md"],
+    "class-advancement-decision.md": ["class-advancement.md"],
+    "advancement-hint.md": ["class-advancement.md"],
+    "cards.md": ["class-advancement.md", "warrior.md", "paladin.md"],
+    "warrior.md": ["cards.md"],
+    "paladin.md": ["cards.md", "class-advancement.md"],
+    "one-pager.md": ["tech-stack.md"],
+    "scope-board.md": ["milestone.md"],
+    "milestone.md": ["scope-board.md", "production-pipeline.md"],
+    "tech-stack.md": ["one-pager.md"],
+    "production-pipeline.md": ["milestone.md"],
+    "screen.md": ["ui-ux.md"],
+    "ui-ux.md": ["screen.md", "ui-ux-work-log.md"],
+    "ui-ux-work-log.md": []
+  },
+  "required": {
+    "always": ["changelog.md"],
+    "agentChange": ["docs-mapping.md"],
+    "newDoc": ["dependency-map.md", "dependency-index.json"]
+  },
+  "agentMapping": {
+    "project-pd": ["one-pager.md", "scope-board.md", "milestone.md", "production-pipeline.md", "tech-stack.md"],
+    "content-manager": ["cards.md", "class-advancement.md", "warrior.md", "paladin.md"],
+    "ui-ux-manager": ["ui-ux.md", "screen.md", "ui-ux-work-log.md"]
+  }
+}

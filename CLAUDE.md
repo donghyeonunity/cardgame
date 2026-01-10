@@ -189,5 +189,48 @@ pre-commit hook 실행
 ### 참조
 - `.claude/agents/docs-mapping.md`: 에이전트-문서 매핑
 - `.claude/docs/dependency-map.md`: 문서 의존성 맵
-- `.git/hooks/pre-commit`: Git hook 스크립트
+- `.githooks/pre-commit`: Git hook 스크립트
 - `01. docs/changelog.md`: 변경 로그
+
+---
+
+## Token Optimization (토큰 최적화)
+
+### 필수: 문서 로딩 규칙
+**토큰 효율을 위해 다음 규칙을 따릅니다.**
+
+#### 인덱스 우선 참조
+```
+1. dependency-index.json 먼저 로딩 (30줄)
+2. 전체 맵 파싱 대신 JSON 조회 사용
+3. 필요시에만 상세 문서 로딩
+```
+
+#### 로딩 순서
+| 순서 | 파일 | 용도 |
+|:----:|------|------|
+| 1 | `dependency-index.json` | 의존성 빠른 조회 |
+| 2 | 작업 대상 문서만 | 실제 수정 필요시 |
+| 3 | `dependency-map.md` | 비고/컨텍스트 필요시 |
+
+#### 캐싱 규칙
+- 한 번 읽은 인덱스는 세션 내 재로딩 금지
+- 수정하지 않은 문서는 재로딩 금지
+
+### Hook 출력 모드
+
+#### 기본 (요약)
+```
+[문서 체크]
+  + new-doc.md (미등록)
+→ 2개 항목 확인 필요
+```
+
+#### 상세 모드
+```bash
+DOC_HOOK_VERBOSE=1 git commit -m "메시지"
+```
+
+### 참조
+- `.claude/docs/dependency-index.json`: 의존성 인덱스
+- `.claude/docs/loading-guide.md`: 로딩 최적화 가이드
