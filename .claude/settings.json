@@ -24,6 +24,10 @@
         "hooks": [
           {
             "type": "command",
+            "command": "pwsh -NoProfile -File .claude/events/on-session-save.ps1"
+          },
+          {
+            "type": "command",
             "command": "pwsh -NoProfile -File .claude/events/on-end-work.ps1"
           }
         ]

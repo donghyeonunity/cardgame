@@ -3,7 +3,25 @@
     "allow": [
       "WebSearch",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(dir:*)",
+      "Bash(findstr:*)",
+      "Bash(tree /F \"C:\\\\Users\\\\Administrator\\\\Documents\\\\cardgame\")",
+      "Bash(where:*)",
+      "Bash(where npm:*)",
+      "mcp__context7__query-docs",
+      "Bash(winget install OpenJS.NodeJS.LTS --accept-package-agreements --accept-source-agreements)",
+      "Bash(export PATH=\"/c/Program Files/nodejs:$PATH\")",
+      "Bash(npx tailwindcss:*)",
+      "Bash(npm run build:*)",
+      "Bash(bash:*)"
     ]
-  }
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "context7",
+    "sequential-thinking",
+    "shrimp-task-manager",
+    "ClaudeTalkToFigma"
+  ]
 }
