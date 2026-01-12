@@ -262,6 +262,125 @@ scale: 1 → 1.3 → 1
 
 ---
 
+## 몬스터 사망 애니메이션 (Enemy Death)
+
+몬스터 HP가 0이 되면 재생되는 사망 애니메이션
+
+### 타이밍
+
+| 상수 | 값 | 설명 |
+|------|-----|------|
+| `DEATH_ANIMATION_DURATION` | 0.5초 | 사망 애니메이션 총 시간 |
+
+### 애니메이션 속성
+
+```
+opacity: 1 → 0
+scale: 1 → 0.5
+y: 0 → -30
+이징: easeOut
+```
+
+```
+      ┌────┐
+      │적  │ ↗ (위로 축소되며 사라짐)
+      └────┘
+```
+
+### 사망 흐름
+
+```
+[적 HP ≤ 0 감지]
+       ↓
+[사망 애니메이션 시작] ─── 0.5초 ───→ [보상 화면]
+       ↓
+   [70% 시점]
+       ↓
+[골드 드랍 애니메이션 시작]
+```
+
+---
+
+## 골드 드랍 애니메이션 (Gold Drop)
+
+몬스터 처치 시 동전이 흩뿌려지는 애니메이션
+
+### 트리거 타이밍
+
+- 사망 애니메이션 **70% 시점** (0.35초)에 시작
+- 사망 애니메이션과 자연스럽게 오버랩
+
+### 동전 개수 (획득량 기준)
+
+| 획득 골드 | 동전 개수 |
+|----------|:--------:|
+| 10~20 G | 3개 |
+| 21~40 G | 4개 |
+| 41+ G | 5개 |
+
+### 각 동전 애니메이션
+
+```
+시작: 몬스터 위치 (중앙)
+  - opacity: 0
+  - scale: 0
+
+중간 (30%):
+  - opacity: 1
+  - scale: 1.2
+  - y: -40 (위로 튀어오름)
+  - x: 랜덤 (-50 ~ +50)
+
+최종 (100%):
+  - opacity: 0
+  - scale: 0.5
+  - y: +50~80 (아래로 낙하)
+
+총 시간: 0.8초
+이징: easeOut
+```
+
+```
+           🪙
+        🪙    🪙
+      🪙   👾   🪙    (몬스터 위치에서 흩뿌려짐)
+           ↓↓↓
+        (낙하하며 사라짐)
+```
+
+### 골드 텍스트 애니메이션
+
+동전과 함께 "+N" 텍스트가 표시됨
+
+```
+시작:
+  - opacity: 0
+  - scale: 0.5
+  - y: +20
+
+중간 (20%):
+  - opacity: 1
+  - scale: 1.3
+
+종료:
+  - opacity: 0
+  - scale: 0.8
+  - y: -50
+
+총 시간: 1초
+```
+
+### 상단 바 골드 펄스
+
+골드 드랍 완료 후 상단 바의 골드 표시에 펄스 효과
+
+```
+scale: 1 → 1.2 → 1
+시간: 0.3초
+```
+
+---
+
 ## 애니메이션 교체 방법
 
 애니메이션은 독립적인 설정 파일로 분리되어 쉽게 교체 가능합니다.
@@ -317,8 +436,10 @@ B 옵션으로 변경:
 | 플랫폼 | 파일 경로 | 설명 |
 |--------|----------|------|
 | Proto | `dev/proto/src/animations/cardAnimations.ts` | 카드 드로우/버림 애니메이션 |
-| Proto | `dev/proto/src/animations/combatAnimations.ts` | 전투 애니메이션 (Peek & Hit, 피격) |
+| Proto | `dev/proto/src/animations/combatAnimations.ts` | 전투 애니메이션 (Peek & Hit, 피격, 사망) |
 | Proto | `dev/proto/src/stores/gameStore.ts` | 애니메이션 상태 관리 |
 | Proto | `dev/proto/src/components/battle/CharacterCard.tsx` | 유저 캐릭터 애니메이션 적용 |
 | Proto | `dev/proto/src/components/battle/EnemyCard.tsx` | 적 캐릭터 애니메이션 적용 |
+| Proto | `dev/proto/src/components/effects/GoldDrop.tsx` | 골드 드랍 애니메이션 |
+| Proto | `dev/proto/src/components/ui/TopBar.tsx` | 상단 바 (골드 펄스) |
 | Main | TBD | - |
