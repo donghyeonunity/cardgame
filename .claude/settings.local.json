@@ -14,7 +14,20 @@
       "Bash(export PATH=\"/c/Program Files/nodejs:$PATH\")",
       "Bash(npx tailwindcss:*)",
       "Bash(npm run build:*)",
-      "Bash(bash:*)"
+      "Bash(bash:*)",
+      "Bash(npx tsc:*)",
+      "mcp__ClaudeTalkToFigma__join_channel",
+      "mcp__ClaudeTalkToFigma__get_document_info",
+      "mcp__ClaudeTalkToFigma__create_frame",
+      "mcp__ClaudeTalkToFigma__create_text",
+      "mcp__ClaudeTalkToFigma__set_corner_radius",
+      "mcp__ClaudeTalkToFigma__create_ellipse",
+      "mcp__ClaudeTalkToFigma__create_rectangle",
+      "mcp__ClaudeTalkToFigma__clone_node",
+      "mcp__ClaudeTalkToFigma__get_node_info",
+      "mcp__ClaudeTalkToFigma__set_text_content",
+      "mcp__ClaudeTalkToFigma__set_stroke_color",
+      "mcp__ClaudeTalkToFigma__set_fill_color"
     ]
   },
   "enableAllProjectMcpServers": true,

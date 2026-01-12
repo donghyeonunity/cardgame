@@ -36,6 +36,7 @@ UI/UX 설계 문서 담당
 | 공통 UI/UX | `01. docs/02. proto/00. common/ui-ux.md` | 공통 UI 규칙 |
 | 전투 화면 | `01. docs/02. proto/02. battle-scene/screen.md` | 전투 화면 레이아웃 |
 | 전투 UI/UX | `01. docs/02. proto/02. battle-scene/ui-ux.md` | 전투 UI 인터랙션 |
+| 전투 애니메이션 | `01. docs/02. proto/02. battle-scene/animation.md` | 카드/전투/이펙트 애니메이션 |
 
 ---
 

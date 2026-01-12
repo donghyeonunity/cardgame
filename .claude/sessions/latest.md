@@ -1,34 +1,35 @@
 ﻿# 이전 세션 요약
 
-**저장 시간:** 2026-01-10 19:34:23
+**저장 시간:** 2026-01-12 10:22:20
 
 ## 진행 중인 작업
-- **현재 작업:** 세션 복구 + 문서 자동 업데이트 시스템 구현
+- **현재 작업:** 피의 제단(Blood Altar) 구현 완료 - 문서 업데이트 완료
 - **담당 에이전트:** PA
 - **진행률:** 100%
 
 ## 주요 결정사항
-1. **세션 저장 구조**: 에이전트별 폴더 분리 (동시성 처리 및 백업 관리 용이)
-2. **세션 백업 정책**: 에이전트별 5개, 전체 5개 (저장 공간과 복구 유연성 균형)
-3. **문서 업데이트 방식**: 기존 문서 수정 + 변경 로그 기록 (이력 추적과 문서 최신화 동시 달성)
-4. **에이전트-문서 매핑**: 별도 매핑 문서 (docs-mapping.md) (중앙 관리로 유지보수 용이)
+1. **계약 카드 명칭**: 피의 제단 선택지를 '계약 카드'로 명명 (리스크/리워드 컨셉에 맞는 명칭)
+2. **다중 선택 시스템**: 기존 3개 중 1개 → 0~3개 다중 선택으로 변경 (더 많은 전략적 선택지 제공)
+3. **히든 보상**: 3개 모두 선택 시 에너지 +1, 드라마틱 연출 (하이 리스크 하이 리턴 보상)
+4. **속삭임 애니메이션**: 불투명도 펄스 + 빨간 글로우 + 미세한 떨림 (공포/유혹 분위기 연출)
+5. **버튼 텍스트 떨림**: 선택 수에 따라 텍스트 떨림 강도 증가 (key prop으로 애니메이션 리셋) (긴장감 고조 효과)
 
 ## TODO 현황
-- [x] 세션 디렉토리 구조 생성
-- [x] on-session-save.ps1 스크립트 작성
-- [x] settings.json 훅 추가
-- [x] CLAUDE.md 저장 규칙 추가
-- [x] PA.md 세션 체크 워크플로우 추가
-- [x] 세션 README.md 문서 작성
-- [x] 스크립트 버그 수정 (Hashtable 지원)
-- [x] 에이전트-문서 매핑 파일 생성
-- [x] 변경 로그 파일 생성
-- [x] CLAUDE.md 문서 업데이트 규칙 추가
-- [x] PA.md 문서 명령어 추가
-- [x] 문서 업데이트 테스트
+- [x] 피의 제단 UI 구현
+- [x] 계약 카드 다중 선택 시스템
+- [x] 호버 프리뷰 (저주 카드, 장신구)
+- [x] 속삭임 애니메이션
+- [x] 히든 보상 연출
+- [x] 순차 등장 애니메이션
+- [x] 버튼 텍스트 떨림
+- [x] 장신구 TopBar 표시
+- [x] 마을 시설 타이틀 (지역명)
+- [x] village-system.md 문서 업데이트
+- [x] changelog.md 변경 이력 추가
+- [ ] 동료 턴 효과 전투 중 적용
 
 ## 활성 컨텍스트
-- **작업 파일:** `.claude/events/on-session-save.ps1``, ``.claude/sessions/README.md``, ``.claude/agents/docs-mapping.md``, ``01. docs/changelog.md``, ``CLAUDE.md``, ``.claude/agents/PA.md`
+- **작업 파일:** `dev/proto/src/components/screens/BattleScreen.tsx``, ``dev/proto/src/components/ui/TopBar.tsx``, ``dev/proto/src/data/facilities.ts``, ``dev/proto/src/data/accessories.ts``, ``dev/proto/src/stores/gameStore.ts``, ``01. docs/02. proto/02. battle-scene/systems/village-system.md``, ``01. docs/changelog.md`
 - **활성 에이전트:** PA
 
 ---
